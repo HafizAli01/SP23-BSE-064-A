@@ -1,0 +1,125 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: black;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+}
+
+.logo-container {
+    display: inline-block;
+}
+
+.logo {
+    width: 70px; 
+    height: auto;
+}
+
+.checkout-container {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+
+.checkout-content {
+    width: 60%; 
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info,
+.shipping-address {
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="email"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus {
+    border-color: #007bff;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.proceed-button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+.proceed-button:hover {
+    background-color: #0056b3;
+}
+
+.custom-footer {
+    width: 100vw; 
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 40px 60px;
+    background-color: #f1f1f1;
+    color: black;
+    border-top: 1px solid #ccc;
+    margin-top: 60px;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    transform: translateX(-50%);
+}
+
+.footer-section {
+    flex: 1 1 220px;
+    min-width: 220px;
+}
+
+.footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    color: #111;
+    font-weight: 600;
+}
+
+.footer-section p,
+.footer-section a {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #444;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+    color: #000;
+}

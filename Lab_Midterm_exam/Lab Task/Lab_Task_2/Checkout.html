@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo-container">
+            <img src="HeaderLogo.png" alt="Logo" class="logo">
+        </div>
+    </header>
+
+    <div class="checkout-container">
+        <div class="checkout-content">
+<div class="contact-info">
+    <h2>CONTACT INFORMATION</h2>
+    <p>Please enter your email address to receive the order details.</p>
+    <input 
+        type="email" 
+        id="email" 
+        name="email" 
+        placeholder="E-mail" 
+        required 
+    >
+    <div class="error-message" id="email-error"></div>
+</div>
+
+<div class="shipping-address">
+    <form id="shipping-form">
+        <div class="form-row">
+            <div class="form-group">
+                <input 
+                    type="text" 
+                    id="first-name" 
+                    name="first-name" 
+                    placeholder="First Name" 
+                    pattern="[A-Za-z\s]+" 
+                    required
+                >
+                <div class="error-message" id="first-name-error"></div>
+            </div>
+            <div class="form-group">
+                <input 
+                    type="text" 
+                    id="last-name" 
+                    name="last-name" 
+                    placeholder="Last Name" 
+                    pattern="[A-Za-z\s]+" 
+                    required
+                >
+                <div class="error-message" id="last-name-error"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input 
+                type="text" 
+                id="address" 
+                name="address" 
+                placeholder="Address" 
+                required
+            >
+            <div class="error-message" id="address-error"></div>
+        </div>
+        <div class="form-group">
+            <input 
+                type="text" 
+                placeholder="Address line 2 (optional - e.g. company name)"
+            >
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <input 
+                    type="text" 
+                    id="city" 
+                    name="city" 
+                    placeholder="City" 
+                    required
+                >
+                <div class="error-message" id="city-error"></div>
+            </div>
+            <div class="form-group">
+                <input 
+                    type="text" 
+                    id="postal-code" 
+                    name="postal-code" 
+                    placeholder="Postal Code" 
+                    required
+                >
+                <div class="error-message" id="postal-code-error"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input 
+                type="tel" 
+                id="phone" 
+                name="phone" 
+                placeholder="Phone number" 
+                pattern="\d{7,15}" 
+                required
+            >
+            <div class="error-message" id="phone-error"></div>
+        </div>
+
+        <div class="form-row">
+            <input 
+                type="text" 
+                id="credit-card" 
+                name="credit-card" 
+                placeholder="Credit Card Number" 
+                pattern="\d{16}" 
+                required
+            >
+            <div class="error-message" id="credit-card-error"></div>
+        </div>
+
+        <div class="form-group">
+            <input 
+                type="month" 
+                id="expiry-date" 
+                name="expiry-date" 
+                placeholder="MM/YYYY" 
+                required
+            >
+            <div class="error-message" id="expiry-date-error"></div>
+        </div>
+
+        <div class="form-group">
+            <input 
+                type="text" 
+                id="cvv" 
+                name="cvv" 
+                placeholder="CVV" 
+                pattern="\d{3}" 
+                required
+            >
+            <div class="error-message" id="cvv-error"></div>
+        </div>
+
+        <button type="submit" class="proceed-button">PROCEED TO DELIVERY OPTIONS</button>
+    </form>
+</div>
+
+
+    <footer class="custom-footer">
+        <div class="footer-section">
+          <h3>Client Service</h3>
+          <p>Feel free to contact us through any of the following methods:</p>
+          <p><a href="tel:+448081640242">GB 00448081640242</a></p>
+          <p><a href="mailto:support@example.com">E-MAIL US</a></p>
+        </div>
+      
+        <div class="footer-section">
+          <h3>PRIVACY & SECURITY</h3>
+          <p>We protect your personal data.<br>
+          Find more details in our <a href="#">Privacy Policy</a>.</p>
+        </div>
+      
+        <div class="footer-section">
+          <h3>PAYMENT OPTIONS</h3>
+          <p>Choose from various secure payment methods.</p>
+          <div class="payment-icons">
+            <p>Apple Pay</p>
+            <p>Visa</p>
+            <p>Mastercard</p>
+          </div>
+        </div>
+      
+        <div class="footer-section">
+          <h3>EASY RETURNS</h3>
+          <p>Returns within 20 days from delivery. Discover all details on how to return or exchange in the 
+            <a href="#">Client Service area</a>.<br>
+            For more information consult the <a href="#">Return Policy</a>.
+          </p>
+        </div>
+      </footer>      
+
+    <script src="script.js"></script>
+</body>
+</html>

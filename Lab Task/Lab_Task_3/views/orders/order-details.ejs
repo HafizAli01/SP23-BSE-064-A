@@ -1,0 +1,35 @@
+<%- include('../layouts/layout') %>
+<div class="container mt-5">
+  <h2>Order Details</h2>
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">Order ID: <%= order._id %></h5>
+      <p><strong>Date:</strong> <%= order.createdAt ? order.createdAt.toLocaleString() : '' %></p>
+      <p><strong>Status:</strong> <%= order.status || 'Pending' %></p>
+      <p><strong>Total:</strong> $<%= order.total %></p>
+      <% if (order.user) { %>
+        <p><strong>Customer:</strong> <%= order.user.firstName %> <%= order.user.lastName %> (<%= order.user.email %>)</p>
+      <% } %>
+    </div>
+  </div>
+  <h4>Items</h4>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% order.items.forEach(item => { %>
+        <tr>
+          <td><%= item.name %></td>
+          <td><%= item.quantity %></td>
+          <td>$<%= item.price %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <a href="/orders" class="btn btn-secondary">Back to Orders</a>
+</div> 

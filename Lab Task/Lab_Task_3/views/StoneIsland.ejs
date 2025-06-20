@@ -1,0 +1,269 @@
+<div class="hero-wrapper">
+    <img src="/Images/HeroSection.jpg" alt="Hero Image" class="hero-image">
+    <div class="overlay"></div> 
+
+    <nav class="navbar custom-navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse w-100" id="customNavbar">
+            <div class="d-flex justify-content-between align-items-center w-100 flex-wrap">
+
+              <div class="navbar-left d-flex gap-4">
+
+                <div class="nav-item dropdown position-static">
+                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">COLLECTIONS</a>
+                  <div class="dropdown-menu mega-menu border-0 p-4 w-100 mt-0 rounded-0 shadow bg-white">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <h6 class="text-uppercase mb-3">STONE ISLAND</h6>
+                        <ul class="list-unstyled">
+                          <li><a href="#" class="dropdown-item">New Arrivals</a></li>
+                          <li><a href="#" class="dropdown-item">View All</a></li>
+                          <li><a href="#" class="dropdown-item">Coats & Jackets</a></li>
+                          <li><a href="#" class="dropdown-item">Knitwear</a></li>
+                          <li><a href="#" class="dropdown-item">Fleecewear</a></li>
+                          <li><a href="#" class="dropdown-item">Overshirts & Shirts</a></li>
+                          <li><a href="#" class="dropdown-item">Polos & T-Shirts</a></li>
+                          <li><a href="#" class="dropdown-item">Trousers & Shorts</a></li>
+                          <li><a href="#" class="dropdown-item">Shoes</a></li>
+                          <li><a href="#" class="dropdown-item">Accessories</a></li>
+                        </ul>
+                      </div>
+              
+                      <div class="col-md-6 offset-md-1 d-flex gap-4">
+                        <div class="d-flex flex-column align-items-start">
+                          <img src="/Images/Menu1.jpg" class="img-fluid mb-2" alt="New Arrivals">
+                          <p class="text-uppercase fw-bold small">New Arrivals</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-start">
+                          <img src="/Images/Menu2.jpg" class="img-fluid mb-2" alt="Stone Island Marina">
+                          <p class="text-uppercase fw-bold small">Stone Island Marina</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="nav-item dropdown position-static">
+                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">BRAND</a>
+                  <div class="dropdown-menu mega-menu border-0 p-4 w-100 mt-0 rounded-0 shadow bg-white">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <h6 class="text-uppercase mb-3">About Us</h6>
+                        <ul class="list-unstyled">
+                          <li><a href="#" class="dropdown-item">Research</a></li>
+                          <li><a href="#" class="dropdown-item">Heritage</a></li>
+                          <li><a href="#" class="dropdown-item">Projects</a></li>
+                          <li><a href="#" class="dropdown-item">Innovation</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-md-6 offset-md-1">
+                        <img src="/Images/Menu4.jpg" class="img-fluid mb-2" alt="Stone Island Marina">
+                        <p class="text-uppercase fw-bold small">The Research Hub</p>                          
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+              </div>
+      
+              <div class="navbar-center mx-auto">
+                <a href="/"><img src="/Images/HeaderLogo.png" alt="Stone Island Logo" class="navbar-logo"></a>
+              </div>
+      
+              <div class="navbar-right d-flex gap-4">
+                <a href="#" class="nav-link">SEARCH</a>
+                <% if (user) { %>
+                  <a href="/auth/logout" class="nav-link">LOGOUT</a>
+                  <a href="/orders" class="nav-link">MY ORDERS</a>
+                <% } else { %>
+                  <a href="/auth/login" class="nav-link">LOG IN</a>
+                <% } %>
+                <a href="/cart" class="nav-link">BAG <%= cart ? cart.length : 0 %></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="hero-content">
+          <h2>SAM GELLAITRY IN STONE ISLAND STELLINA</h2>
+          <p>Sam Gellaitry appears in the Spring_Summer '025 campaign wearing 4100081 3L Gore-Tex 
+              Made with BIONIC Polyester Face. The windproof and waterproof jacket is part of the 
+              new Stone Island Stellina collection, engineered for function and performance 
+              through active layering pieces.</p>
+              
+          <div class="hero-buttons">
+              <a href="#products" class="hero-button">SHOP NOW</a>
+              <a href="#" class="hero-button">DISCOVER MORE</a>
+          </div>
+      </div>
+</div>
+
+<section class="product-showcase py-5 bg-white" id="products">
+    <div class="container-fluid">
+      <div class="showcase-title d-flex justify-content-between mb-4 px-3">
+        <h2 class="text-uppercase fw-bold">STONE ISLAND MARINA</h2>
+        <a href="#products" class="btn">SHOP NOW</a>
+      </div>
+  
+      <div class="product-carousel-wrapper overflow-hidden">
+        <div class="product-carousel d-flex">
+          <% products.forEach(product => { %>
+            <div class="product-card text-center">
+              <img src="<%= product.image %>" alt="<%= product.name %>" class="img-fluid">
+              <h6 class="mt-2"><%= product.name %></h6>
+              <p><%= product.description %></p>
+              <div class="product-price mb-2">
+                <strong>$<%= product.price.toFixed(2) %></strong>
+              </div>
+              <form action="/cart/add/<%= product._id %>" method="POST" class="d-inline">
+                <input type="hidden" name="quantity" value="1">
+                <button type="submit" class="btn btn-dark btn-sm">Add to Cart</button>
+              </form>
+            </div>
+          <% }); %>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <section class="collaboration">
+    <div class="collab-content">
+        <img src="/Images/Collaboration.jpg" alt="Collaboration Banner">
+    </div>
+
+    <div class="collab-text">
+        <div class="serial">002 - 2025</div>
+        <h2>STONE ISLAND MATERIAL SCIENCE</h2>
+        <a href="#" class="discover-more">Discover More</a>
+    </div>
+</section>
+
+
+<section class="info-section d-flex flex-wrap">
+    <div class="info-box position-relative">
+      <img src="/Images/Footer1.jpg" alt="Contact Us" class="img-fluid w-100">
+      <div class="info-text position-absolute">
+        <h2>CONTACT US</h2>
+        <a href="#">LEARN MORE</a>
+      </div>
+    </div>
+  
+    <div class="info-box position-relative">
+      <img src="/Images/Footer2.jpg" alt="Our Stores" class="img-fluid w-100">
+      <div class="info-text position-absolute">
+        <h2>OUR STORES</h2>
+        <a href="#">VIEW MORE</a>
+      </div>
+    </div>
+  
+    <div class="info-box position-relative">
+      <img src="/Images/Footer3.jpg" alt="Our Services" class="img-fluid w-100">
+      <div class="info-text position-absolute">
+        <h2>OUR SERVICES</h2>
+        <a href="#">VIEW MORE</a>
+      </div>
+    </div>
+  </section>
+  
+  <section class="info-links d-flex flex-wrap justify-content-start align-items-center">
+    <div class="link-item">
+      <span>01 PICK UP IN STORE</span>
+    </div>
+    <div class="link-item">
+      <span>02 BOOK AN APPOINTMENT</span>
+    </div>
+    <div class="link-item">
+      <span>03 FREE RETURNS</span>
+    </div>
+  </section>  
+
+
+<footer class="footer bg-black text-white py-5">
+    <div class="container-fluid">
+        <div class="row">
+        <div class="col-lg-2 col-md-6 col-sm-12">
+            <h5>CONTACT</h5>
+            <ul class="list-unstyled">
+                <li>Contact Us</li>
+                <li>GB 00448081640242</li>
+                <li>Email Us</li>
+                <li>Store Locator</li>
+                <li>Book an Appointment</li>
+            </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-6 col-sm-12">
+            <h5>CLIENT SERVICE</h5>
+            <ul class="list-unstyled">
+                <li>Our Services</li>
+                <li>FAQ</li>
+                <li>Order Management</li>
+                <li>Online & In-Store Services</li>
+                <li>Packaging</li>
+                <li>Aftercare</li>
+                <li>Authenticity</li>
+            </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-6 col-sm-12">
+            <h5>CORPORATE</h5>
+            <ul class="list-unstyled">
+                <li>↗ Brand Information</li>
+                <li>↗ Investor Relations</li>
+                <li>↗ Governance</li>
+                <li>↗ Sustainability</li>
+                <li>Headquarters</li>
+                <li>↗ Careers</li>
+                <li>↗ Accessibility Statement</li>
+            </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-6 col-sm-12">
+            <h5>FOLLOW US</h5>
+            <ul class="list-unstyled">
+                <li>↗ Instagram</li>
+                <li>↗ TikTok</li>
+                <li>↗ YouTube</li>
+                <li>↗ LinkedIn</li>
+                <li>↗ Threads</li>
+                <li>↗ X</li>
+                <li>↗ Facebook</li>
+                <li>↗ Pinterest</li>
+                <li>↗ Line</li>
+                <li>↗ KakaoTalk</li>
+                <li>↗ WeChat</li>
+                <li>↗ Weibo</li>
+                <li>↗ Red</li>
+            </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-12 col-sm-12">
+            <h5>NEWSLETTER</h5>
+            <form>
+                <input type="email" placeholder="Enter your e-mail" class="form-control mb-3">
+                <button type="submit" class="btn btn-light w-100">CONTINUE</button>
+            </form>
+            <p>SHOP IN: United Kingdom</p>
+            <p>LANGUAGE: English</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom pt-4">
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#" class="text-white">COOKIE POLICY</a></li>
+            <li class="list-inline-item"><a href="#" class="text-white">PRIVACY POLICY</a></li>
+            <li class="list-inline-item"><a href="#" class="text-white">COOKIE SETTINGS</a></li>
+            <li class="list-inline-item"><a href="#" class="text-white">RETURN POLICY</a></li>
+            <li class="list-inline-item"><a href="#" class="text-white">TERMS AND CONDITIONS OF SALE</a></li>
+            <li class="list-inline-item"><a href="#" class="text-white">TERMS AND CONDITIONS OF USE</a></li>
+        </ul>
+
+        <div class="footer-logo text-center my-4">
+            <img src="/Images/logo.jpg" alt="Logo" class="img-fluid">
+        </div>
+
+        <p class="text-center">&copy; 2024 SPORTSWEAR COMPANY S.P.A. ALL RIGHTS RESERVED - CORPORATE INFO</p>
+    </div>
+</footer> 

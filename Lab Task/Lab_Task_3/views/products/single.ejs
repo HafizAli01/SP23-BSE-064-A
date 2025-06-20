@@ -1,0 +1,29 @@
+<div class="container mt-5 single-product">
+  <div>
+    <img src="<%= product.image %>" alt="<%= product.name %>" style="max-width:320px; border-radius:10px;">
+  </div>
+  <div class="single-product-details">
+    <h2><%= product.name %></h2>
+    <p class="price">$<%= product.price %></p>
+    <p><%= product.description %></p>
+    <form action="/cart/add/<%= product._id %>" method="POST" style="margin:0;">
+      <button type="submit" class="btn btn-success add-to-cart-btn w-100">Add to Cart</button>
+    </form>
+  </div>
+</div>
+
+<% if (relatedProducts && relatedProducts.length > 0) { %>
+  <div class="container mt-5">
+    <h4>Related Products</h4>
+    <div class="products-grid">
+      <% relatedProducts.forEach(rp => { %>
+        <div class="product-card">
+          <img src="<%= rp.image %>" alt="<%= rp.name %>">
+          <h3><%= rp.name %></h3>
+          <div class="price">$<%= rp.price %></div>
+          <a href="/products/<%= rp._id %>" class="btn btn-outline-primary btn-sm mt-2">View Details</a>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+<% } %>

@@ -1,0 +1,114 @@
+<%- include('../../layouts/layout') %>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header bg-warning text-dark">
+          <h3 class="mb-0"><i class="fas fa-edit"></i> Edit Vehicle</h3>
+        </div>
+        <div class="card-body">
+          <% if (error_msg && error_msg.length > 0) { %>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <%= error_msg %>
+              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+          <% } %>
+
+          <form action="/admin/vehicles/edit/<%= vehicle._id %>" method="POST" enctype="multipart/form-data">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="name" class="form-label">Vehicle Name *</label>
+                  <input type="text" class="form-control" id="name" name="name" 
+                         value="<%= vehicle.name %>" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="brand" class="form-label">Brand *</label>
+                  <input type="text" class="form-control" id="brand" name="brand" 
+                         value="<%= vehicle.brand %>" required>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="price" class="form-label">Price *</label>
+                  <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="number" class="form-control" id="price" name="price" 
+                           min="0" step="0.01" value="<%= vehicle.price %>" required>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="type" class="form-label">Vehicle Type *</label>
+                  <select class="form-select" id="type" name="type" required>
+                    <option value="">Select Type</option>
+                    <option value="sedan" <%= vehicle.type === 'sedan' ? 'selected' : '' %>>Sedan</option>
+                    <option value="SUV" <%= vehicle.type === 'SUV' ? 'selected' : '' %>>SUV</option>
+                    <option value="truck" <%= vehicle.type === 'truck' ? 'selected' : '' %>>Truck</option>
+                    <option value="hatchback" <%= vehicle.type === 'hatchback' ? 'selected' : '' %>>Hatchback</option>
+                    <option value="coupe" <%= vehicle.type === 'coupe' ? 'selected' : '' %>>Coupe</option>
+                    <option value="convertible" <%= vehicle.type === 'convertible' ? 'selected' : '' %>>Convertible</option>
+                    <option value="wagon" <%= vehicle.type === 'wagon' ? 'selected' : '' %>>Wagon</option>
+                    <option value="minivan" <%= vehicle.type === 'minivan' ? 'selected' : '' %>>Minivan</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea class="form-control" id="description" name="description" 
+                        rows="4" placeholder="Enter vehicle description..."><%= vehicle.description %></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="image" class="form-label">Vehicle Image</label>
+              <input type="file" class="form-control" id="image" name="image" accept="image/*">
+              <div class="form-text">Leave empty to keep current image. Accepted formats: JPG, PNG, GIF</div>
+              
+              <% if (vehicle.image) { %>
+                <div class="mt-2">
+                  <label class="form-label">Current Image:</label>
+                  <div>
+                    <img src="<%= vehicle.image %>" alt="<%= vehicle.name %>" 
+                         class="img-thumbnail" style="max-width: 200px; max-height: 150px;">
+                  </div>
+                </div>
+              <% } %>
+            </div>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <a href="/admin/vehicles" class="btn btn-secondary me-md-2">
+                <i class="fas fa-arrow-left"></i> Cancel
+              </a>
+              <button type="submit" class="btn btn-warning">
+                <i class="fas fa-save"></i> Update Vehicle
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Preview image before upload
+document.getElementById('image').addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      // You can add image preview functionality here if needed
+    };
+    reader.readAsDataURL(file);
+  }
+});
+</script> 

@@ -1,0 +1,124 @@
+<%- include('../layouts/layout') %>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="/vehicles">Vehicles</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><%= vehicle.name %></li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card">
+        <img src="<%= vehicle.image %>" class="card-img-top" 
+             alt="<%= vehicle.name %>" style="height: 400px; object-fit: cover;">
+      </div>
+    </div>
+    
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title"><%= vehicle.name %></h1>
+          
+          <div class="mb-3">
+            <span class="badge bg-primary fs-6"><%= vehicle.type %></span>
+            <span class="badge bg-info fs-6 ms-2"><%= vehicle.brand %></span>
+          </div>
+          
+          <div class="mb-4">
+            <h2 class="text-success">$<%= vehicle.price.toLocaleString() %></h2>
+          </div>
+          
+          <% if (vehicle.description) { %>
+            <div class="mb-4">
+              <h5>Description</h5>
+              <p class="card-text"><%= vehicle.description %></p>
+            </div>
+          <% } %>
+          
+          <div class="mb-4">
+            <h5>Vehicle Details</h5>
+            <div class="row">
+              <div class="col-6">
+                <p><strong>Brand:</strong> <%= vehicle.brand %></p>
+                <p><strong>Type:</strong> <%= vehicle.type %></p>
+              </div>
+              <div class="col-6">
+                <p><strong>Price:</strong> $<%= vehicle.price.toLocaleString() %></p>
+                <p><strong>Status:</strong> 
+                  <% if (vehicle.inStock) { %>
+                    <span class="badge bg-success">In Stock</span>
+                  <% } else { %>
+                    <span class="badge bg-danger">Out of Stock</span>
+                  <% } %>
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="d-grid gap-2">
+            <a href="/vehicles" class="btn btn-outline-secondary">
+              <i class="fas fa-arrow-left"></i> Back to Vehicles
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h5><i class="fas fa-info-circle"></i> Additional Information</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="text-center">
+                <i class="fas fa-calendar fa-2x text-primary mb-2"></i>
+                <h6>Added Date</h6>
+                <p class="text-muted"><%= new Date(vehicle.createdAt).toLocaleDateString() %></p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="text-center">
+                <i class="fas fa-tag fa-2x text-success mb-2"></i>
+                <h6>Brand</h6>
+                <p class="text-muted"><%= vehicle.brand %></p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="text-center">
+                <i class="fas fa-car fa-2x text-info mb-2"></i>
+                <h6>Type</h6>
+                <p class="text-muted"><%= vehicle.type %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.card {
+  border: none;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.card-img-top {
+  border-radius: 0.375rem 0.375rem 0 0;
+}
+
+.badge {
+  font-size: 0.875rem;
+}
+</style> 

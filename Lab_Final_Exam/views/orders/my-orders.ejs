@@ -1,0 +1,48 @@
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4">My Orders</h1>
+            
+            <% if (orders && orders.length > 0) { %>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Date</th>
+                                <th>Products</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% orders.forEach(order => { %>
+                                <tr>
+                                    <td><%= order._id.toString().substring(0, 8) %>...</td>
+                                    <td><%= new Date(order.createdAt).toLocaleDateString() %></td>
+                                    <td>
+                                        <% order.products.forEach(product => { %>
+                                            <div><%= product.name %> (x<%= product.quantity %>)</div>
+                                        <% }); %>
+                                    </td>
+                                    <td>£<%= order.totalAmount %></td>
+                                    <td>
+                                        <span class="badge bg-<%= order.status === 'pending' ? 'warning' : order.status === 'completed' ? 'success' : 'secondary' %>">
+                                            <%= order.status.toUpperCase() %>
+                                        </span>
+                                    </td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+            <% } else { %>
+                <div class="text-center py-5">
+                    <h3>No orders found</h3>
+                    <p>You haven't placed any orders yet.</p>
+                    <a href="/products" class="btn btn-primary">Start Shopping</a>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</div>

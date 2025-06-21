@@ -1,0 +1,43 @@
+<%- include('../layouts/layout') %>
+<div class="container mt-5">
+  <h2>Admin: Orders</h2>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Customer</th>
+        <th>Items</th>
+        <th>Total</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Update</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% orders.forEach(order => { %>
+        <tr>
+          <td><%= order.user ? (order.user.firstName + ' ' + order.user.lastName) : 'N/A' %></td>
+          <td>
+            <ul>
+              <% order.items.forEach(item => { %>
+                <li><%= item.name %> x <%= item.quantity %></li>
+              <% }) %>
+            </ul>
+          </td>
+          <td>$<%= order.total %></td>
+          <td><%= order.createdAt ? order.createdAt.toLocaleString() : '' %></td>
+          <td><%= order.status || 'Pending' %></td>
+          <td>
+            <form action="/admin/orders/status/<%= order._id %>" method="POST" class="d-flex">
+              <select name="status" class="form-select form-select-sm me-2">
+                <option value="Pending" <%= order.status === 'Pending' ? 'selected' : '' %>>Pending</option>
+                <option value="Completed" <%= order.status === 'Completed' ? 'selected' : '' %>>Completed</option>
+                <option value="Cancelled" <%= order.status === 'Cancelled' ? 'selected' : '' %>>Cancelled</option>
+              </select>
+              <button type="submit" class="btn btn-sm btn-primary">Update</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div> 

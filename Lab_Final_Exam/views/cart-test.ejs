@@ -1,0 +1,20 @@
+<h1>Cart Test Page</h1>
+<p>This is a test to see if the cart route is working.</p>
+
+<% if (typeof cart !== 'undefined') { %>
+    <p>Cart is defined with <%= cart.length %> items</p>
+    <% if (cart.length > 0) { %>
+        <ul>
+            <% cart.forEach(item => { %>
+                <li><%= item.name %> - $<%= item.price %> x <%= item.quantity %></li>
+            <% }); %>
+        </ul>
+        <p>Total: $<%= total %></p>
+    <% } else { %>
+        <p>Cart is empty</p>
+    <% } %>
+<% } else { %>
+    <p>Cart is undefined</p>
+<% } %>
+
+<p>User: <%= typeof user !== 'undefined' ? (user ? user.firstName : 'Not logged in') : 'User undefined' %></p> 
